@@ -48,8 +48,8 @@ view: order_items {
     type: sum
     sql: ${sale_price} ;;  }
   measure: profit {
-    type: number
-    sql: sum(${total_sale_price} - ${inventory_items.total_cost}) ;;
+    type: sum
+    sql: sum(${sale_price} - ${inventory_items.cost}) ;;
   }
   measure: average_sale_price {
     type: average
