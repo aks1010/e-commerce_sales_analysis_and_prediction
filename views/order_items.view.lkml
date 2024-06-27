@@ -1,3 +1,4 @@
+include: "/views/inventory_items.view.lkml"
 # The name of this view in Looker is "Order Items"
 view: order_items {
   # The sql_table_name parameter indicates the underlying database table
@@ -46,6 +47,10 @@ view: order_items {
   measure: total_sale_price {
     type: sum
     sql: ${sale_price} ;;  }
+  measure: profit {
+    type: number
+    sql: sum(${total_sale_price} - ${inventory_items.total_cost}) ;;
+  }
   measure: average_sale_price {
     type: average
     sql: ${sale_price} ;;  }
